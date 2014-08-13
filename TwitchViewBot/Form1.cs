@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace TwitchViewBot
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         // Misc
         private Random r;
@@ -24,10 +25,14 @@ namespace TwitchViewBot
         List<string> proxies = new List<string>();
         List<string> accounts = new List<string>();
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             r = new Random();
+
+            // Populate Lists from files
+            LoadProxiesFromFile("proxies.txt");
+            LoadAccountsFromFile("accounts.txt");
 
             // Setup the Datasources for our lists
             LsbURLSWithTokens.DataSource = viewLinks;
@@ -88,14 +93,50 @@ namespace TwitchViewBot
             OpenFileDialog fileDialog = new OpenFileDialog { Multiselect = false, CheckFileExists = true };
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                // File Selected
-                // TODO: Populate the list with the Entries from the file
+                LoadProxiesFromFile(fileDialog.FileName);
             }
+        }
+
+        // TODO: Refactor the file Handling, and calling code
+        private List<string> LoadFromFile(string fileName)
+        {
+            // Exit early if no file was selected
+            var list = new List<string>();
+            if (fileName == "") { return list; }
+
+            using (var sr = new StreamReader(fileName))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    // Kinda bad, but since File.ReadAllLines(fileName) does this too we are saving a bit of performance since we don't need to convert to array
+                    list.Add(line);
+                }
+            }
+
+            return list;
+        }
+
+        void LoadProxiesFromFile(string fileName)
+        {
+            proxies = LoadFromFile(fileName);
+            Rebind(LsbProxies, proxies);
+            Rebind(LsbViewProxies, proxies);
+        }
+
+        void LoadAccountsFromFile(string fileName)
+        {
+            accounts = LoadFromFile(fileName);
+            Rebind(LsbFollowAccounts, accounts);
         }
 
         private void ButtonLoadAccounts_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog fileDialog = new OpenFileDialog { Multiselect = false, CheckFileExists = true };
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                LoadAccountsFromFile(fileDialog.FileName);
+            }
         }
     }
 }

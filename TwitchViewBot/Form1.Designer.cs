@@ -1,6 +1,6 @@
 ﻿namespace TwitchViewBot
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@
             this.LsbFollowAccounts = new System.Windows.Forms.ListBox();
             this.ButtonFollowChannel = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
-            this.Button10 = new System.Windows.Forms.Button();
+            this.ButtonLoadChatAccounts = new System.Windows.Forms.Button();
             this.Label4 = new System.Windows.Forms.Label();
             this.TextBox4 = new System.Windows.Forms.TextBox();
             this.LsbChatAccountsOAuth = new System.Windows.Forms.ListBox();
@@ -144,7 +144,7 @@
             // 
             // GroupBox3
             // 
-            this.GroupBox3.Controls.Add(this.Button10);
+            this.GroupBox3.Controls.Add(this.ButtonLoadChatAccounts);
             this.GroupBox3.Controls.Add(this.Label4);
             this.GroupBox3.Controls.Add(this.TextBox4);
             this.GroupBox3.Controls.Add(this.LsbChatAccountsOAuth);
@@ -158,14 +158,14 @@
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "ChatBot";
             // 
-            // Button10
+            // ButtonLoadChatAccounts
             // 
-            this.Button10.Location = new System.Drawing.Point(296, 172);
-            this.Button10.Name = "Button10";
-            this.Button10.Size = new System.Drawing.Size(95, 23);
-            this.Button10.TabIndex = 22;
-            this.Button10.Text = "Load Accounts";
-            this.Button10.UseVisualStyleBackColor = true;
+            this.ButtonLoadChatAccounts.Location = new System.Drawing.Point(296, 172);
+            this.ButtonLoadChatAccounts.Name = "ButtonLoadChatAccounts";
+            this.ButtonLoadChatAccounts.Size = new System.Drawing.Size(95, 23);
+            this.ButtonLoadChatAccounts.TabIndex = 22;
+            this.ButtonLoadChatAccounts.Text = "Load Accounts";
+            this.ButtonLoadChatAccounts.UseVisualStyleBackColor = true;
             // 
             // Label4
             // 
@@ -300,7 +300,7 @@
             this.TextBoxViewChannel.Name = "TextBoxViewChannel";
             this.TextBoxViewChannel.Size = new System.Drawing.Size(76, 20);
             this.TextBoxViewChannel.TabIndex = 17;
-            this.TextBoxViewChannel.Text = "Devchan";
+            this.TextBoxViewChannel.Text = "Channel";
             // 
             // Label5
             // 
@@ -363,7 +363,7 @@
             this.ButtonGenerateViewLinks.UseVisualStyleBackColor = true;
             this.ButtonGenerateViewLinks.Click += new System.EventHandler(this.ButtonGenerateViewLinks_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -372,8 +372,8 @@
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.GroupBox3);
             this.Controls.Add(this.GroupBox2);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "Twitch Bot";
             this.GroupBox2.ResumeLayout(false);
             this.GroupBox2.PerformLayout();
             this.GroupBox3.ResumeLayout(false);
@@ -397,7 +397,7 @@
         internal System.Windows.Forms.ListBox LsbFollowAccounts;
         internal System.Windows.Forms.Button ButtonFollowChannel;
         internal System.Windows.Forms.GroupBox GroupBox3;
-        internal System.Windows.Forms.Button Button10;
+        internal System.Windows.Forms.Button ButtonLoadChatAccounts;
         internal System.Windows.Forms.Label Label4;
         internal System.Windows.Forms.TextBox TextBox4;
         internal System.Windows.Forms.ListBox LsbChatAccountsOAuth;
